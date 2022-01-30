@@ -8,7 +8,16 @@
     <title>Custom video</title>
 </head>
 <body>
-    
+    <div class="player">
+        <video src="assets/video/video.mp4" class="player__video" controls poster="assets/img/poster.jpg"></video>
+        <div class="player__controls">
+            <button class="player__button play__button play"></button>
+            <input class="progress__bar" type="range" min="0" max="100" value="0" name="progress" id="progress">
+            <button class="player__button volume__button volume"></button>
+            <input class="volume__bar" type="range" min="0" max="100" value="100" name="volume" id="volume">
+        </div>
+    </div>
+
     <script src="scripts/index.js"></script>
 </body>
 </html>

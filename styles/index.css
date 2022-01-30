@@ -3,3 +3,58 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.player { }
+.player__video { 
+    width: 700px;
+    height: 400px;
+}
+.player__controls {
+    width: 100wv;
+    border: 2px solid black;
+    padding: 20px 20px; 
+    display: flex;
+}
+
+.player__button {
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+}
+.player__button:hover {
+    cursor: pointer;
+    filter: invert(80%) sepia(16%) saturate(617%) hue-rotate(7deg) brightness(86%) contrast(89%);
+}
+.play__button { 
+    margin: 0 20px 0 0;
+}
+.play { 
+    background-image: url('../assets/svg/play.svg');
+}
+.pause { 
+    background-image: url('../assets/svg/pause.svg');
+}
+
+
+.progress__bar { 
+    width: calc(80% - 40px);
+}
+
+
+.volume__button { 
+    margin: 0 20px;
+}
+.volume { 
+    background-image: url('../assets/svg/volume.svg');
+}
+.mute {
+    background-image: url('../assets/svg/mute.svg');
+}
+
+
+.volume__bar { 
+    width: calc(20% - 40px);
+}
