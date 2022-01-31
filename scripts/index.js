@@ -4,37 +4,26 @@ const volumeBtn = document.querySelector('.volume__button');
 const progressBar = document.querySelector('.progress__bar');
 const volumeBar = document.querySelector('.volume__bar');
 
-// console.dir(video);
-
-function togglePlay(){
+function clickPlay(){
     if(video.paused) {
         video.play();
-        playBtn.classList.remove('play');
-        playBtn.classList.add('pause');
-
     } else {
         video.pause();
-        playBtn.classList.add('play');
-        playBtn.classList.remove('pause');
     }
+    playBtn.classList.toggle('pause');
 }
-function toggleVolume(){
-    if(video.volume === 0) {
-        video.volume = 1;
-        volumeBtn.classList.remove('mute');
-        volumeBtn.classList.add('volume');
 
-        volumeBar.value = 100;
+function clickVolume(){
+    if(video.volume === 0) {
+        video.volume = volumeBar.value / 100;
+        volumeBtn.classList.remove('mute');
     } else {
         video.volume = 0;
         volumeBtn.classList.add('mute');
-        volumeBtn.classList.remove('volume');
-
-        volumeBar.value = 0;
     }
 }
 
-function clickProgressBar(e){
+function changeProgressBar(e){
     const totalTime = video.duration;
     const value = e.target.value;
 
@@ -48,23 +37,22 @@ function updateProgressBar(e){
     progressBar.value = currentTime / totalTime * 100;
 }
 
-function clickVolumeBar(e){
-
+function changeVolumeBar(e){
     const value = e.target.value;
+
     video.volume = value / 100;
 
-    console.log(value);
-    console.log(video.volume);
-
+    if(video.volume === 0 && value === 0){
+        volumeBtn.classList.add('mute');
+    } else {
+        volumeBtn.classList.remove('mute');
+    }
 }
 
 video.addEventListener('timeupdate', updateProgressBar);
 
-playBtn.addEventListener('click', togglePlay);
-volumeBtn.addEventListener('click', toggleVolume);
+playBtn.addEventListener('click', clickPlay);
+volumeBtn.addEventListener('click', clickVolume);
 
-progressBar.addEventListener('click', clickProgressBar);
-volumeBar.addEventListener('click', clickVolumeBar);
-
-progressBar.addEventListener('input', clickProgressBar);
-volumeBar.addEventListener('input', clickVolumeBar);
+progressBar.addEventListener('input', changeProgressBar);
+volumeBar.addEventListener('input', changeVolumeBar);

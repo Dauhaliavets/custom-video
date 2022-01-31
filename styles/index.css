@@ -19,6 +19,7 @@
 .player__button {
     width: 40px;
     height: 40px;
+    background-image: url('../assets/svg/play.svg');
     background-color: transparent;
     background-repeat: no-repeat;
     background-position: center;
@@ -31,29 +32,21 @@
 .play__button { 
     margin: 0 20px 0 0;
 }
-.play { 
-    background-image: url('../assets/svg/play.svg');
-}
 .pause { 
     background-image: url('../assets/svg/pause.svg');
 }
-
 
 .progress__bar { 
     width: calc(80% - 40px);
 }
 
-
 .volume__button { 
     margin: 0 20px;
-}
-.volume { 
     background-image: url('../assets/svg/volume.svg');
 }
 .mute {
     background-image: url('../assets/svg/mute.svg');
 }
-
 
 .volume__bar { 
     width: calc(20% - 40px);
