@@ -1,53 +1,108 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
-.player { }
-.player__video { 
-    width: 700px;
-    height: 400px;
+body {
+	padding: 0 100px;
 }
+
+.player {
+	position: relative;
+	overflow: hidden;
+}
+.player:hover {
+	cursor: pointer;
+}
+.player:hover .player__controls {
+	bottom: 0;
+	transition: bottom 0.3s linear;
+}
+
+.player__poster {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-image: url('../assets/img/poster.jpg');
+    background-position: center;
+    background-size: cover;
+    opacity: 1;
+    transition: 1s;
+}
+
+.player__video {
+	width: 100vw;
+	height: auto;
+}
+.player__btn {
+	display: block;
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	top: calc(50% - 50px);
+	left: calc(50% - 50px);
+	background-image: url('../assets/svg/play-btn.svg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
+	transition: 0.3s;
+}
+.player__btn:hover {
+	filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+		contrast(87%);
+	transform: scale(1.1);
+	transition: 0.3s;
+}
+.player__btn-d_none {
+	display: none;
+}
+
 .player__controls {
-    width: 100wv;
-    border: 2px solid black;
-    padding: 20px 20px; 
-    display: flex;
+	position: absolute;
+	bottom: -60px;
+	width: 100%;
+	background-color: rgba(53, 53, 53, 0.918);
+	padding: 10px 20px;
+	display: flex;
+	transition: bottom 0.3s linear;
 }
 
 .player__button {
-    width: 40px;
-    height: 40px;
-    background-image: url('../assets/svg/play.svg');
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-position: center;
-    border: none;
+	width: 40px;
+	height: 40px;
+	background-image: url('../assets/svg/play.svg');
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: center;
+	border: none;
+	transition: 0.3s;
 }
 .player__button:hover {
-    cursor: pointer;
-    filter: invert(80%) sepia(16%) saturate(617%) hue-rotate(7deg) brightness(86%) contrast(89%);
+	cursor: pointer;
+	filter: invert(26%) sepia(15%) saturate(638%) hue-rotate(7deg) brightness(92%)
+		contrast(87%);
+	transition: 0.3s;
 }
-.play__button { 
-    margin: 0 20px 0 0;
+.play__button {
+	margin: 0 20px 0 0;
 }
-.pause { 
-    background-image: url('../assets/svg/pause.svg');
-}
-
-.progress__bar { 
-    width: calc(80% - 40px);
+.pause {
+	background-image: url('../assets/svg/pause.svg');
 }
 
-.volume__button { 
-    margin: 0 20px;
-    background-image: url('../assets/svg/volume.svg');
+.progress__bar {
+	width: calc(80% - 40px);
+}
+
+.volume__button {
+	margin: 0 20px;
+	background-image: url('../assets/svg/volume.svg');
 }
 .mute {
-    background-image: url('../assets/svg/mute.svg');
+	background-image: url('../assets/svg/mute.svg');
 }
 
-.volume__bar { 
-    width: calc(20% - 40px);
+.volume__bar {
+	width: calc(20% - 40px);
 }

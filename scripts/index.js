@@ -1,21 +1,28 @@
 const video = document.querySelector('.player__video');
+const poster = document.querySelector('.player__poster');
+const playerBtn = document.querySelector('.player__btn');
 const playBtn = document.querySelector('.play__button');
 const volumeBtn = document.querySelector('.volume__button');
 const progressBar = document.querySelector('.progress__bar');
 const volumeBar = document.querySelector('.volume__bar');
 
 function clickPlay(){
+    poster.style.opacity = 0;
+
     if(video.paused) {
         video.play();
     } else {
         video.pause();
     }
+    playerBtn.classList.toggle('player__btn-d_none');
     playBtn.classList.toggle('pause');
 }
 
 function clickVolume(){
-    if(video.volume === 0) {
-        video.volume = volumeBar.value / 100;
+    const value = Number(volumeBar.value);
+
+    if(video.volume === 0 && volumeBtn.classList.contains('mute')) {
+        video.volume = value / 100;
         volumeBtn.classList.remove('mute');
     } else {
         video.volume = 0;
@@ -38,8 +45,7 @@ function updateProgressBar(e){
 }
 
 function changeVolumeBar(e){
-    const value = e.target.value;
-
+    const value = Number(e.target.value);
     video.volume = value / 100;
 
     if(video.volume === 0 && value === 0){
@@ -49,7 +55,10 @@ function changeVolumeBar(e){
     }
 }
 
+video.addEventListener('click', clickPlay);
 video.addEventListener('timeupdate', updateProgressBar);
+
+playerBtn.addEventListener('click', clickPlay);
 
 playBtn.addEventListener('click', clickPlay);
 volumeBtn.addEventListener('click', clickVolume);
