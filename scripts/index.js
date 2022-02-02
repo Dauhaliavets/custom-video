@@ -9,7 +9,11 @@ const volumeBar = document.querySelector('.volume__bar');
 const fullscreenBtn = document.querySelector('.fullscreen__button');
 
 function clickPlay() {
-	poster.style.opacity = 0;
+    const isOpacity = poster.style.opacity;
+
+    if(!isOpacity) {
+        poster.style.opacity = '0';
+    }
 
 	if (video.paused) {
 		video.play();
@@ -36,18 +40,26 @@ function changeProgressBar(e) {
 	const totalTime = video.duration;
 	const value = e.target.value;
 
+    this.style.background = `linear-gradient(to right, #BDAE82 0%, #BDAE82 ${value}%, #fff ${value}%, white 100%)`;
 	video.currentTime = (totalTime / 100) * value;
 }
 
 function updateProgressBar(e) {
 	const totalTime = video.duration;
 	const currentTime = e.target.currentTime;
+    const value = ((currentTime / totalTime) * 100).toFixed(0);
 
-	progressBar.value = (currentTime / totalTime) * 100;
+    progressBar.style.background = `
+            linear-gradient(to right, #BDAE82 0%, #BDAE82 ${value}%, #fff ${value}%, white 100%)
+        `;
+    progressBar.value = value;
 }
 
 function changeVolumeBar(e) {
 	const value = Number(e.target.value);
+    this.style.background = `
+            linear-gradient(to right, #BDAE82 0%, #BDAE82 ${value}%, #fff ${value}%, white 100%)
+        `;
 	video.volume = value / 100;
 
 	if (video.volume === 0 && value === 0) {
