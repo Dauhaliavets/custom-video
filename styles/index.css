@@ -63,10 +63,10 @@ body {
 
 .player__controls {
 	position: absolute;
-	bottom: -60px;
+	bottom: -52px;
 	width: 100%;
 	background-color: rgba(53, 53, 53, 0.918);
-	padding: 10px 20px;
+	padding: 6px 15px;
 	display: flex;
     justify-content: space-between;
     align-items: center;
@@ -145,7 +145,7 @@ body {
 }
 
 .fullscreen__button {
-    margin: 0 20px;
+    margin: 0 10px 0 20px;
 	background-image: url('../assets/svg/enlarge.svg');
     transition: 0.3s;
 }
@@ -171,6 +171,7 @@ body {
     }
     .player__controls {
         padding: 5px 10px;
+        bottom: -50px;
     }
     .progress__bar {
         position: absolute;
@@ -210,6 +211,9 @@ body {
         height: 50px;
         top: calc(50% - 25px);
         left: calc(50% - 25px);
+    }
+    .player__controls {
+        bottom: -30px;
     }
     .player__button {
         width: 20px;

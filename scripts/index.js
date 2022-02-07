@@ -39,6 +39,10 @@ function clickVolume() {
 function changeProgressBar(e) {
 	const totalTime = video.duration;
 	const value = e.target.value;
+    if(value === '100') {
+        playerBtn.classList.toggle('player__btn-d_none');
+        playBtn.classList.toggle('pause');
+    }
 
     this.style.background = `linear-gradient(to right, #BDAE82 0%, #BDAE82 ${value}%, #fff ${value}%, white 100%)`;
 	video.currentTime = (totalTime / 100) * value;
@@ -47,6 +51,10 @@ function changeProgressBar(e) {
 function updateProgressBar(e) {
 	const totalTime = video.duration;
 	const currentTime = e.target.currentTime;
+    if(currentTime === totalTime) {
+        playerBtn.classList.toggle('player__btn-d_none');
+        playBtn.classList.toggle('pause');
+    }
     const value = ((currentTime / totalTime) * 100).toFixed(0);
 
     progressBar.style.background = `
